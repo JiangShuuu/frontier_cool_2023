@@ -2,13 +2,16 @@
 	<Header :selected-value="selectSort" @update:selected-value="selectSort = $event" />
 	<Container v-if="data" :data="data" :current-page="currentPage" :select-sort="selectSort" @get-total-page="getTotalPage" />
 	<Pagination :total="totalPage" :current-page="currentPage" @set-current-page="setCurrentPage" />
+	<Modal :modal-is-open="modalIsOpen" @modal-change="modal.handleClick" />
 </template>
 
 <script lang="ts" setup>
 import Header from '~/components/Header.vue';
 import Container from '~/components/Container/index.vue';
 import Pagination from '~/components/Pagination.vue';
-import { ref, watch } from 'vue';
+import Modal from '~/components/Modal.vue';
+import { ref, watch, provide } from 'vue';
+import { Toggle } from '~/Type';
 
 const favoriteMemberStr = localStorage.getItem('favoriteMember');
 const data = favoriteMemberStr ? ref(JSON.parse(favoriteMemberStr)) : ref([]);
@@ -29,4 +32,12 @@ const setCurrentPage = (n: number) => {
 watch(selectSort, (val, oldVal) => {
 	currentPage.value = 1;
 });
+// Modal
+const modalIsOpen = ref(false);
+const modal: Toggle = {
+	handleClick: (value: boolean) => {
+		modalIsOpen.value = value;
+	},
+};
+provide('modalToggle', modal);
 </script>

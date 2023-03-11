@@ -13,20 +13,24 @@
 				<Icon v-else icon="mdi:cards-heart-outline" class="w-7 h-7" @Click="$emit('add-favorite', data)" />
 			</div>
 		</div>
-		<div class="line-clamp line-clamp-1">{{ data.name }}</div>
+		<div class="line-clamp line-clamp-1 cursor-pointer" @click="handleClick(true)">{{ data.name }}</div>
 	</div>
 </template>
 
 <script lang="ts" setup>
 import { TypeDummyData } from '~/vue-query/dummydata';
 import { Icon } from '@iconify/vue';
-import { ref } from 'vue';
+import { ref, inject } from 'vue';
+import { Toggle } from '~/Type';
 
 defineEmits(['add-favorite', 'remove-favorite']);
 defineProps<{ data: TypeDummyData; isFavorite: boolean }>();
 
-// image loading event
+// wip
+const { handleClick }: any = inject<Toggle>('modalToggle');
+
 const loading = ref(true);
+
 const error = ref(false);
 
 function hideLoading() {
