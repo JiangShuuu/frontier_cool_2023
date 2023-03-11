@@ -13,8 +13,8 @@ import { chunk } from 'lodash-es';
 import { defineProps, defineEmits, watch, ref } from 'vue';
 
 const props = defineProps<{ currentPage: number; data: TypeDummyData[]; selectSort: string }>();
-const dummyResult = ref();
 const emit = defineEmits(['get-total-page']);
+const dummyResult = ref();
 
 watch(
 	() => props.selectSort,

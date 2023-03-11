@@ -130,13 +130,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
 import { defineProps } from 'vue';
 
 defineProps<{ total: number; currentPage: number }>();
 defineEmits(['set-current-page']);
-
-// const currentPage = ref(1);
 </script>
 
 <style lang="postcss" scoped>
