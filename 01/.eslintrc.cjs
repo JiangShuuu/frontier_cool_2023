@@ -31,5 +31,6 @@ module.exports = {
 		'@typescript-eslint/no-unused-vars': ['error', { varsIgnorePattern: '.*', args: 'none' }],
 		'@typescript-eslint/no-explicit-any': 'off',
 		'vue/multi-word-component-names': 0,
+		'vue/v-on-event-hyphenation': 0,
 	},
 };
