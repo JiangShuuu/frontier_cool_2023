@@ -5,16 +5,21 @@
 			<router-link to="/favorite" :class="[$route.path === '/' ? 'text-purple' : 'text-purple-light']">Favorite</router-link>
 		</div>
 		<div class="flex items-center space-x-2">
-			<select id="sort" name="" class="border-2 text-xs p-1">
+			<select id="sort" name="" class="border-2 text-xs p-1 cursor-pointer">
 				<option value="10">10</option>
 				<option value="20">20</option>
 				<option value="30">30</option>
 			</select>
-			<Icon icon="ic:outline-grid-view" :class="[modelchange ? 'text-purple-light' : 'text-purple']" class="w-6 h-6" @Click="modelchange = false" />
+			<Icon
+				icon="ic:outline-grid-view"
+				:class="[modelchange ? 'text-purple-light' : 'text-purple']"
+				class="w-6 h-6 cursor-pointer"
+				@Click="modelchange = false"
+			/>
 			<Icon
 				icon="material-symbols:view-list-sharp"
 				:class="[!modelchange ? 'text-purple-light' : 'text-purple']"
-				class="w-6 h-6"
+				class="w-6 h-6 cursor-pointer"
 				@Click="modelchange = true"
 			/>
 		</div>
