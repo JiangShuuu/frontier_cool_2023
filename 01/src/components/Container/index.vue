@@ -1,7 +1,7 @@
 <template>
 	<div v-if="dummyResult" class="grid grid-cols-5 pt-5 justify-items-center">
 		<div v-for="item in dummyResult[currentPage - 1]" :key="item.id">
-			<Card :data="item" :is-like="favorite.includes(item)" @add-favorite="addFavorite" @remove-favorite="removeFavorite" />
+			<Card :data="item" :is-favorite="favorite.includes(item)" @add-favorite="addFavorite" @remove-favorite="removeFavorite" />
 		</div>
 	</div>
 </template>
