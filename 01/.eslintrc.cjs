@@ -32,5 +32,6 @@ module.exports = {
 		'@typescript-eslint/no-explicit-any': 'off',
 		'vue/multi-word-component-names': 0,
 		'vue/v-on-event-hyphenation': 0,
+		'vue/no-parsing-error': 0,
 	},
 };

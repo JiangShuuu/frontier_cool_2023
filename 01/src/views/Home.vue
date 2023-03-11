@@ -13,9 +13,11 @@
 		<Card />
 		<Card />
 	</div>
+	<Pagination />
 </template>
 
 <script lang="ts" setup>
 import Header from '../components/Global/Header.vue';
 import Card from '../components/Card.vue';
+import Pagination from '../components/Pagination.vue';
 </script>
