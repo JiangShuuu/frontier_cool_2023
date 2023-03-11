@@ -1,23 +1,11 @@
 <template>
-	<!-- Header -->
 	<Header />
-	<div class="grid grid-cols-5 gap-4 pt-5">
-		<Card />
-		<Card />
-		<Card />
-		<Card />
-		<Card />
-		<Card />
-		<Card />
-		<Card />
-		<Card />
-		<Card />
-	</div>
+	<Container />
 	<Pagination />
 </template>
 
 <script lang="ts" setup>
-import Header from '../components/Global/Header.vue';
-import Card from '../components/Card.vue';
+import Header from '../components/Header.vue';
+import Container from '../components/Container/index.vue';
 import Pagination from '../components/Pagination.vue';
 </script>
