@@ -1,6 +1,13 @@
 <template>
-	<Header :selected-value="selectSort" @update:selected-value="selectSort = $event" />
-	<Container v-if="!isLoading && data" :data="data" :current-page="currentPage" :select-sort="selectSort" @get-total-page="getTotalPage" />
+	<Header :render-modal="renderModal" :selected-value="selectSort" @set-render-modal="setRenderModal" @update:selected-value="selectSort = $event" />
+	<Container
+		v-if="!isLoading && data"
+		:render-modal="renderModal"
+		:data="data"
+		:current-page="currentPage"
+		:select-sort="selectSort"
+		@get-total-page="getTotalPage"
+	/>
 	<Pagination :total="totalPage" :current-page="currentPage" @set-current-page="setCurrentPage" />
 	<Modal :modal-is-open="modalIsOpen" :modal-data="modalData" @modal-change="modal.handleClick" />
 </template>
@@ -51,4 +58,11 @@ const modal: Toggle = {
 	},
 };
 provide('modalToggle', modal);
+
+// Card or List
+const renderModal = ref('card');
+const setRenderModal = (n: string) => {
+	console.log(n);
+	renderModal.value = n;
+};
 </script>

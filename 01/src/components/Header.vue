@@ -12,15 +12,15 @@
 			</select>
 			<Icon
 				icon="ic:outline-grid-view"
-				:class="[modelchange ? 'text-purple' : 'nagtive-style']"
+				:class="[renderModal === 'card' ? 'text-purple' : 'nagtive-style']"
 				class="w-6 h-6 cursor-pointer"
-				@Click="modelchange = false"
+				@Click="modalChange('card')"
 			/>
 			<Icon
 				icon="material-symbols:view-list-sharp"
-				:class="[!modelchange ? 'text-purple' : 'nagtive-style']"
+				:class="[renderModal === 'list' ? 'text-purple' : 'nagtive-style']"
 				class="w-6 h-6 cursor-pointer"
-				@Click="modelchange = true"
+				@click="modalChange('list')"
 			/>
 		</div>
 	</section>
@@ -31,14 +31,18 @@ import { Icon } from '@iconify/vue';
 import { ref } from 'vue';
 
 // wip
-defineProps<{ selectedValue: any }>();
+defineProps<{ selectedValue: any; renderModal: string }>();
 
 const modelchange = ref(true);
 
-const emit = defineEmits(['update:selected-value']);
+const emit = defineEmits(['update:selected-value', 'set-render-modal']);
 
 function onChange(event: any) {
 	emit('update:selected-value', event.target.value);
+}
+
+function modalChange(n: string) {
+	emit('set-render-modal', n);
 }
 </script>
 

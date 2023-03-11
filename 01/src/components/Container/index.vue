@@ -1,8 +1,14 @@
 <template>
-	<div v-if="dummyResult" :class="listStyle">
+	<div v-if="dummyResult" :class="renderModal === 'card' ? gridStyle : listStyle">
 		<div v-for="item in dummyResult[currentPage - 1]" :key="item.id">
-			<List :data="item" :is-favorite="findFoverite(item)" @add-favorite="addFavorite" @remove-favorite="removeFavorite" />
-			<!-- <Card :data="item" :is-favorite="findFoverite(item)" @add-favorite="addFavorite" @remove-favorite="removeFavorite" /> -->
+			<Card
+				v-if="renderModal === 'card'"
+				:data="item"
+				:is-favorite="findFoverite(item)"
+				@add-favorite="addFavorite"
+				@remove-favorite="removeFavorite"
+			/>
+			<List v-else :data="item" :is-favorite="findFoverite(item)" @add-favorite="addFavorite" @remove-favorite="removeFavorite" />
 		</div>
 	</div>
 </template>
@@ -14,7 +20,7 @@ import { TypeDummyData } from '~/vue-query/dummydata';
 import { chunk } from 'lodash-es';
 import { watch, ref } from 'vue';
 
-const props = defineProps<{ currentPage: number; data: TypeDummyData[]; selectSort: string }>();
+const props = defineProps<{ currentPage: number; data: TypeDummyData[]; selectSort: string; renderModal: string }>();
 const emit = defineEmits(['get-total-page']);
 const dummyResult = ref();
 const listStyle = 'h-[650px] scrollbar mt-5 space-y-4';
