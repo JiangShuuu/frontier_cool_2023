@@ -1,7 +1,7 @@
 <template>
 	<div v-if="dummyResult" class="grid grid-cols-5 pt-5 justify-items-center">
 		<div v-for="item in dummyResult[currentPage - 1]" :key="item.id">
-			<Card :data="item" @add-favorite="addFavorite" @remove-favorite="removeFavorite" />
+			<Card :data="item" :is-like="favorite.includes(item)" @add-favorite="addFavorite" @remove-favorite="removeFavorite" />
 		</div>
 	</div>
 </template>
@@ -25,7 +25,6 @@ watch(
 
 function paginateData(data: TypeDummyData[], pageSize: number) {
 	dummyResult.value = chunk(data, pageSize);
-
 	emit('get-total-page', dummyResult.value.length);
 }
 
@@ -33,14 +32,13 @@ paginateData(props.data, Number(props.selectSort));
 
 // favorite
 const favoriteMemberStr = localStorage.getItem('favoriteMember');
-const favorite = favoriteMemberStr ? ref(JSON.parse(favoriteMemberStr)) : ref(['']);
-const addFavorite = (id: string) => {
-	favorite.value.push(id);
-
+const favorite = favoriteMemberStr ? ref(JSON.parse(favoriteMemberStr)) : ref([]);
+const addFavorite = (item: TypeDummyData) => {
+	favorite.value.push(item);
 	localStorage.setItem('favoriteMember', JSON.stringify(favorite.value));
 };
-const removeFavorite = (id: string) => {
-	const filterFavorite = favorite.value.filter((item: string) => item !== id);
+const removeFavorite = (item: TypeDummyData) => {
+	const filterFavorite = favorite.value.filter((olditem: TypeDummyData) => olditem.id !== item.id);
 	favorite.value = filterFavorite;
 	localStorage.setItem('favoriteMember', JSON.stringify(filterFavorite));
 };
