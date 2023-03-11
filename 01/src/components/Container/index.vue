@@ -26,8 +26,8 @@ watch(
 );
 
 function paginateData(data: TypeDummyData[], pageSize: number) {
-	const chunkedData = chunk(data, pageSize);
-	dummyResult.value = chunkedData;
+	dummyResult.value = chunk(data, pageSize);
+
 	emit('get-total-page', dummyResult.value.length);
 }
 

@@ -1,8 +1,8 @@
 <template>
 	<section class="flex items-center justify-between">
 		<div class="space-x-2 underline underline-offset-4">
-			<router-link to="/" :class="[$route.path === '/' ? 'text-purple-light' : 'text-purple']">ALL</router-link>
-			<router-link to="/favorite" :class="[$route.path === '/' ? 'text-purple' : 'text-purple-light']">Favorite</router-link>
+			<router-link to="/" :class="[$route.path === '/' ? 'text-purple' : 'nagtive-style']">ALL</router-link>
+			<router-link to="/favorite" :class="[$route.path === '/favorite' ? 'text-purple' : 'nagtive-style']">Favorite</router-link>
 		</div>
 		<div class="flex items-center space-x-2">
 			<select id="sort" :value="selectedValue" name="sort" class="border-2 text-xs p-1 cursor-pointer" @change="onChange">
@@ -12,13 +12,13 @@
 			</select>
 			<Icon
 				icon="ic:outline-grid-view"
-				:class="[modelchange ? 'text-purple-light' : 'text-purple']"
+				:class="[modelchange ? 'text-purple' : 'nagtive-style']"
 				class="w-6 h-6 cursor-pointer"
 				@Click="modelchange = false"
 			/>
 			<Icon
 				icon="material-symbols:view-list-sharp"
-				:class="[!modelchange ? 'text-purple-light' : 'text-purple']"
+				:class="[!modelchange ? 'text-purple' : 'nagtive-style']"
 				class="w-6 h-6 cursor-pointer"
 				@Click="modelchange = true"
 			/>
@@ -39,3 +39,9 @@ function onChange(event: any) {
 	emit('update:selected-value', event.target.value);
 }
 </script>
+
+<style lang="postcss" scoped>
+.nagtive-style {
+	@apply text-purple-light hover:text-purple transition duration-300 ease-in-out;
+}
+</style>
