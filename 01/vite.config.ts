@@ -10,4 +10,7 @@ export default defineConfig({
 			'~': join(__dirname, 'src'),
 		},
 	},
+	optimizeDeps: {
+		exclude: ['@tanstack/vue-query', 'vue-demi'],
+	},
 });
