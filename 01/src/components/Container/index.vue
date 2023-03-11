@@ -1,13 +1,15 @@
 <template>
-	<div v-if="dummyResult" class="grid grid-cols-5 mt-5 justify-items-center h-[650px] scrollbar">
+	<div v-if="dummyResult" :class="listStyle">
 		<div v-for="item in dummyResult[currentPage - 1]" :key="item.id">
-			<Card :data="item" :is-favorite="findFoverite(item)" @add-favorite="addFavorite" @remove-favorite="removeFavorite" />
+			<List :data="item" :is-favorite="findFoverite(item)" @add-favorite="addFavorite" @remove-favorite="removeFavorite" />
+			<!-- <Card :data="item" :is-favorite="findFoverite(item)" @add-favorite="addFavorite" @remove-favorite="removeFavorite" /> -->
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
 import Card from './Card.vue';
+import List from './List.vue';
 import { TypeDummyData } from '~/vue-query/dummydata';
 import { chunk } from 'lodash-es';
 import { watch, ref } from 'vue';
@@ -15,6 +17,8 @@ import { watch, ref } from 'vue';
 const props = defineProps<{ currentPage: number; data: TypeDummyData[]; selectSort: string }>();
 const emit = defineEmits(['get-total-page']);
 const dummyResult = ref();
+const listStyle = 'h-[650px] scrollbar mt-5 space-y-4';
+const gridStyle = 'grid grid-cols-5 mt-5 justify-items-center h-[650px] scrollbar';
 
 watch(
 	() => props.selectSort,

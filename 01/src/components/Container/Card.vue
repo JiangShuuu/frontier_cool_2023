@@ -17,8 +17,8 @@
 				<Icon icon="material-symbols:error-outline-rounded" class="w-8 h-8" />
 			</div>
 			<div class="absolute bottom-0 right-0 text-red cursor-pointer">
-				<Icon v-if="isFavorite" icon="mdi:cards-heart" class="w-7 h-7" @Click="$emit('remove-favorite', data)" />
-				<Icon v-else icon="mdi:cards-heart-outline" class="w-7 h-7" @Click="$emit('add-favorite', data)" />
+				<Icon v-if="isFavorite" icon="mdi:cards-heart" class="w-7 h-7" @click="$emit('remove-favorite', data)" />
+				<Icon v-else icon="mdi:cards-heart-outline" class="w-7 h-7" @click="$emit('add-favorite', data)" />
 			</div>
 		</div>
 		<div class="line-clamp line-clamp-1 cursor-pointer" @click="handleClick(data)">{{ data.name }}</div>
