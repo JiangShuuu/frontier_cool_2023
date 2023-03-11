@@ -6,6 +6,7 @@ export interface TypeDummyData {
 	id: string;
 	name: string;
 	avatar: string;
+	isFavorite: boolean;
 }
 
 const getData = async () => {
@@ -16,6 +17,7 @@ const getData = async () => {
 					id: get(item, 'login.uuid', ''),
 					name: get(item, 'name.title', '') + '. ' + get(item, 'name.first', '') + get(item, 'name.last', ''),
 					avatar: get(item, 'picture.large', ''),
+					isFavorite: true,
 				};
 			}) as TypeDummyData[],
 		};
