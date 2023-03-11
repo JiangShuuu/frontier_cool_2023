@@ -1,7 +1,7 @@
 <template>
 	<div v-if="dummyResult" class="grid grid-cols-5 pt-5 justify-items-center">
 		<div v-for="item in dummyResult[currentPage - 1]" :key="item.id">
-			<Card :data="item" :is-favorite="favorite.includes(item)" @add-favorite="addFavorite" @remove-favorite="removeFavorite" />
+			<Card :data="item" :is-favorite="findFoverite(item)" @add-favorite="addFavorite" @remove-favorite="removeFavorite" />
 		</div>
 	</div>
 </template>
@@ -33,6 +33,9 @@ paginateData(props.data, Number(props.selectSort));
 // favorite
 const favoriteMemberStr = localStorage.getItem('favoriteMember');
 const favorite = favoriteMemberStr ? ref(JSON.parse(favoriteMemberStr)) : ref([]);
+const findFoverite = (item: TypeDummyData) => {
+	return favorite.value.some((olditem: TypeDummyData) => olditem.id === item.id);
+};
 const addFavorite = (item: TypeDummyData) => {
 	favorite.value.push(item);
 	localStorage.setItem('favoriteMember', JSON.stringify(favorite.value));
