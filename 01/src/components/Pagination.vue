@@ -139,7 +139,7 @@ defineEmits(['set-current-page']);
 // const currentPage = ref(1);
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 .btn {
 	@apply bg-gray w-6 h-6 flex items-center justify-center cursor-pointer disabled:bg-gray/20 disabled:text-black/20;
 }
