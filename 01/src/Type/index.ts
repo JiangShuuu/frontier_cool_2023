@@ -1,3 +1,5 @@
+import { TypeDummyData } from '~/vue-query/dummydata';
+
 export interface Toggle {
-	handleClick: (value: boolean) => void;
+	handleClick: (value: TypeDummyData) => void;
 }

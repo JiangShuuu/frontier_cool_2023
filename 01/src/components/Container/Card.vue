@@ -1,7 +1,15 @@
 <template>
 	<div class="py-3 space-y-2 relative w-48">
 		<div class="relative">
-			<img v-if="!error" :src="data.avatar" :alt="data.avatar" class="w-48 h-48 object-cover" @load="hideLoading" @error="handleError" />
+			<img
+				v-if="!error"
+				:src="data.avatar"
+				:alt="data.avatar"
+				class="w-48 h-48 object-cover cursor-pointer"
+				@click="handleClick(data)"
+				@load="hideLoading"
+				@error="handleError"
+			/>
 			<div v-if="loading && !error" class="w-48 h-48 flex items-center justify-center">
 				<Icon icon="uiw:loading" class="w-8 h-8 animate-spin" />
 			</div>
@@ -13,7 +21,7 @@
 				<Icon v-else icon="mdi:cards-heart-outline" class="w-7 h-7" @Click="$emit('add-favorite', data)" />
 			</div>
 		</div>
-		<div class="line-clamp line-clamp-1 cursor-pointer" @click="handleClick(true)">{{ data.name }}</div>
+		<div class="line-clamp line-clamp-1 cursor-pointer" @click="handleClick(data)">{{ data.name }}</div>
 	</div>
 </template>
 
