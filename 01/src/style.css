@@ -29,3 +29,21 @@
     -webkit-line-clamp: 6;
   }
 }
+
+/* scrollbar */
+.scrollbar {
+  overflow: auto;
+  height: 650px;
+}
+.scrollbar::-webkit-scrollbar {
+  @apply bg-white;
+  width: 8px;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-gray-300;
+  border-radius: 12px;
+}
+
+.scrollbar_hidden::-webkit-scrollbar {
+  display: none;
+}

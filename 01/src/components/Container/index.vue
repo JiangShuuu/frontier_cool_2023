@@ -1,5 +1,5 @@
 <template>
-	<div v-if="dummyResult" class="grid grid-cols-5 pt-5 justify-items-center">
+	<div v-if="dummyResult" class="grid grid-cols-5 mt-5 justify-items-center h-[650px] scrollbar">
 		<div v-for="item in dummyResult[currentPage - 1]" :key="item.id">
 			<Card :data="item" :is-favorite="findFoverite(item)" @add-favorite="addFavorite" @remove-favorite="removeFavorite" />
 		</div>
