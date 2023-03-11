@@ -32,23 +32,12 @@ const getTotalPage = (n: number) => {
 	totalPage.value = n;
 };
 
-// CurrentPage wip
-let currentPage = ref();
-if (localStorage.getItem('selectSort')) {
-	console.log('get');
-	currentPage = ref(Number(localStorage.getItem('currentPage')) || 1);
-} else {
-	console.log('getsss');
-
-	currentPage = ref(1);
-}
-
+// CurrentPage
+const currentPage = ref(Number(localStorage.getItem('currentPage')) || 1);
 const setCurrentPage = (n: number) => {
 	currentPage.value = n;
 	localStorage.setItem('currentPage', n.toString());
 };
-
-// watch
 watch(selectSort, (val, oldVal) => {
 	currentPage.value = 1;
 });

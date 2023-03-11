@@ -25,21 +25,24 @@ const favoriteMemberStr = localStorage.getItem('favoriteMember');
 const data = favoriteMemberStr ? ref(JSON.parse(favoriteMemberStr)) : ref([]);
 
 // SelectSort
-const selectSort = ref('30');
+const selectSort = ref(localStorage.getItem('favorite_selectSort') || '30');
+
 // TotalPage
 const totalPage = ref(0);
 const getTotalPage = (n: number) => {
 	totalPage.value = n;
 };
+
 // CurrentPage
-const currentPage = ref(1);
+const currentPage = ref(Number(localStorage.getItem('favorite_currentPage')) || 1);
 const setCurrentPage = (n: number) => {
 	currentPage.value = n;
+	localStorage.setItem('favorite_currentPage', n.toString());
 };
-// watch
 watch(selectSort, (val, oldVal) => {
 	currentPage.value = 1;
 });
+
 // Modal
 const modalIsOpen = ref(false);
 const modalData = ref();
@@ -57,8 +60,9 @@ const modal: Toggle = {
 provide('modalToggle', modal);
 
 // Card or List
-const renderModal = ref('card');
+const renderModal = ref(localStorage.getItem('favorite_renderModal') || 'card');
 const setRenderModal = (n: string) => {
 	renderModal.value = n;
+	localStorage.setItem('favorite_renderModal', n);
 };
 </script>

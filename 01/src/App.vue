@@ -4,4 +4,9 @@
 	</div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+// LocalStorageInit
+if (!localStorage.getItem('selectSort')) {
+	localStorage.setItem('selectSort', '30');
+}
+</script>

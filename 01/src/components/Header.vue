@@ -34,8 +34,10 @@ defineProps<{ selectedValue: any; renderModal: string }>();
 
 const emit = defineEmits(['update:selected-value', 'set-render-modal']);
 
+// wip
 function onChange(event: any) {
 	emit('update:selected-value', event.target.value);
+	localStorage.removeItem('currentPage');
 	localStorage.setItem('selectSort', event.target.value);
 }
 
