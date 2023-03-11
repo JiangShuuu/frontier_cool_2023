@@ -7,7 +7,7 @@
 		<div class="flex items-center space-x-2">
 			<select id="sort" :value="selectedValue" name="sort" class="border-2 text-xs p-1 cursor-pointer" @change="onChange">
 				<option value="10">10</option>
-				<option value="30" default>30</option>
+				<option value="30">30</option>
 				<option value="50">50</option>
 			</select>
 			<Icon
@@ -28,17 +28,15 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { ref } from 'vue';
 
 // wip
 defineProps<{ selectedValue: any; renderModal: string }>();
-
-const modelchange = ref(true);
 
 const emit = defineEmits(['update:selected-value', 'set-render-modal']);
 
 function onChange(event: any) {
 	emit('update:selected-value', event.target.value);
+	localStorage.setItem('selectSort', event.target.value);
 }
 
 function modalChange(n: string) {

@@ -24,7 +24,7 @@ import { Toggle } from '~/Type';
 const { isLoading, data, isError } = useGetData();
 
 // SelectSort
-const selectSort = ref('30');
+const selectSort = ref(localStorage.getItem('selectSort') || '30');
 
 // TotalPage
 const totalPage = ref(0);
@@ -32,10 +32,20 @@ const getTotalPage = (n: number) => {
 	totalPage.value = n;
 };
 
-// CurrentPage
-const currentPage = ref(1);
+// CurrentPage wip
+let currentPage = ref();
+if (localStorage.getItem('selectSort')) {
+	console.log('get');
+	currentPage = ref(Number(localStorage.getItem('currentPage')) || 1);
+} else {
+	console.log('getsss');
+
+	currentPage = ref(1);
+}
+
 const setCurrentPage = (n: number) => {
 	currentPage.value = n;
+	localStorage.setItem('currentPage', n.toString());
 };
 
 // watch
@@ -60,8 +70,9 @@ const modal: Toggle = {
 provide('modalToggle', modal);
 
 // Card or List
-const renderModal = ref('card');
+const renderModal = ref(localStorage.getItem('renderModal') || 'card');
 const setRenderModal = (n: string) => {
 	renderModal.value = n;
+	localStorage.setItem('renderModal', n);
 };
 </script>
