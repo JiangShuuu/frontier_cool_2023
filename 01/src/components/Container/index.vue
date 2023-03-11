@@ -1,6 +1,6 @@
 <template>
 	<div v-if="dummyResult" class="grid grid-cols-5 pt-5 justify-items-center">
-		<div v-for="item in dummyResult[page]" :key="item.id">
+		<div v-for="item in dummyResult[currentPage - 1]" :key="item.id">
 			<Card :data="item" />
 		</div>
 	</div>
@@ -12,9 +12,7 @@ import { TypeDummyData } from '~/vue-query/dummydata';
 import { chunk } from 'lodash-es';
 import { defineProps, defineEmits, watch, ref } from 'vue';
 
-const props = defineProps<{ data: TypeDummyData[]; selectSort: string }>();
-
-const page = 1;
+const props = defineProps<{ currentPage: number; data: TypeDummyData[]; selectSort: string }>();
 
 const dummyResult = ref();
 

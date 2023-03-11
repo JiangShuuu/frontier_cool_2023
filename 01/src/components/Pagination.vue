@@ -1,7 +1,7 @@
 <template>
 	<section v-if="total" class="mt-10 flex items-center justify-center space-x-2">
 		<!-- prev -->
-		<button class="btn" :disabled="currentPage <= 1" @click="currentPage -= 1">
+		<button class="btn" :disabled="currentPage <= 1" @click="$emit('set-current-page', currentPage - 1)">
 			<p>&lt</p>
 		</button>
 
@@ -11,7 +11,7 @@
 				<div
 					:class="[currentPage === item ? 'bg-blue' : 'bg-gray']"
 					class="border w-6 h-6 flex items-center justify-center text-sm cursor-pointer"
-					@click="currentPage = item"
+					@click="$emit('set-current-page', item, 'equl')"
 				>
 					{{ item }}
 				</div>
@@ -24,21 +24,21 @@
 				<div
 					:class="[currentPage === 1 ? 'bg-blue' : 'bg-gray']"
 					class="border w-6 h-6 flex items-center justify-center text-sm cursor-pointer"
-					@click="currentPage = 1"
+					@click="$emit('set-current-page', 1)"
 				>
 					1
 				</div>
 				<div
 					:class="[currentPage === 2 ? 'bg-blue' : 'bg-gray']"
 					class="border w-6 h-6 flex items-center justify-center text-sm cursor-pointer"
-					@click="currentPage = 2"
+					@click="$emit('set-current-page', 2)"
 				>
 					2
 				</div>
 				<div
 					:class="[currentPage === 3 ? 'bg-blue' : 'bg-gray']"
 					class="border w-6 h-6 flex items-center justify-center text-sm cursor-pointer"
-					@click="currentPage = 3"
+					@click="$emit('set-current-page', 3)"
 				>
 					3
 				</div>
@@ -46,7 +46,7 @@
 				<div
 					:class="[currentPage === total ? 'bg-blue' : 'bg-gray']"
 					class="border w-6 h-6 flex items-center justify-center text-sm cursor-pointer"
-					@click="currentPage = total"
+					@click="$emit('set-current-page', total)"
 				>
 					{{ total }}
 				</div>
@@ -55,7 +55,7 @@
 				<div
 					:class="[currentPage === 1 ? 'bg-blue' : 'bg-gray']"
 					class="border w-6 h-6 flex items-center justify-center text-sm cursor-pointer"
-					@click="currentPage = 1"
+					@click="$emit('set-current-page', 1)"
 				>
 					1
 				</div>
@@ -63,21 +63,20 @@
 				<div
 					:class="[currentPage === currentPage - 1 ? 'bg-blue' : 'bg-gray']"
 					class="border w-6 h-6 flex items-center justify-center text-sm cursor-pointer"
-					@click="currentPage = currentPage - 1"
+					@click="$emit('set-current-page', currentPage - 1)"
 				>
 					{{ currentPage - 1 }}
 				</div>
 				<div
 					:class="[currentPage === currentPage ? 'bg-blue' : 'bg-gray']"
 					class="border w-6 h-6 flex items-center justify-center text-sm cursor-pointer"
-					@click="currentPage = currentPage"
 				>
 					{{ currentPage }}
 				</div>
 				<div
 					:class="[currentPage === currentPage + 1 ? 'bg-blue' : 'bg-gray']"
 					class="border w-6 h-6 flex items-center justify-center text-sm cursor-pointer"
-					@click="currentPage = currentPage + 1"
+					@click="$emit('set-current-page', currentPage + 1)"
 				>
 					{{ currentPage + 1 }}
 				</div>
@@ -85,7 +84,7 @@
 				<div
 					:class="[currentPage === total ? 'bg-blue' : 'bg-gray']"
 					class="border w-6 h-6 flex items-center justify-center text-sm cursor-pointer"
-					@click="currentPage = total"
+					@click="$emit('set-current-page', total)"
 				>
 					{{ total }}
 				</div>
@@ -94,7 +93,7 @@
 				<div
 					:class="[currentPage === 1 ? 'bg-blue' : 'bg-gray']"
 					class="border w-6 h-6 flex items-center justify-center text-sm cursor-pointer"
-					@click="currentPage = 1"
+					@click="$emit('set-current-page', 1)"
 				>
 					1
 				</div>
@@ -102,21 +101,21 @@
 				<div
 					:class="[currentPage === total - 2 ? 'bg-blue' : 'bg-gray']"
 					class="border w-6 h-6 flex items-center justify-center text-sm cursor-pointer"
-					@click="currentPage = total - 2"
+					@click="$emit('set-current-page', total - 2)"
 				>
 					{{ total - 2 }}
 				</div>
 				<div
 					:class="[currentPage === total - 1 ? 'bg-blue' : 'bg-gray']"
 					class="border w-6 h-6 flex items-center justify-center text-sm cursor-pointer"
-					@click="currentPage = total - 1"
+					@click="$emit('set-current-page', total - 1)"
 				>
 					{{ total - 1 }}
 				</div>
 				<div
 					:class="[currentPage === total ? 'bg-blue' : 'bg-gray']"
 					class="border w-6 h-6 flex items-center justify-center text-sm cursor-pointer"
-					@click="currentPage = total"
+					@click="$emit('set-current-page', total)"
 				>
 					{{ total }}
 				</div>
@@ -124,7 +123,7 @@
 		</div>
 
 		<!-- next -->
-		<button class="btn" :disabled="currentPage >= total" @click="currentPage += 1">
+		<button class="btn" :disabled="currentPage >= total" @click="$emit('set-current-page', currentPage + 1)">
 			<p>&gt</p>
 		</button>
 	</section>
@@ -134,9 +133,10 @@
 import { ref } from 'vue';
 import { defineProps } from 'vue';
 
-defineProps<{ total: number }>();
+defineProps<{ total: number; currentPage: number }>();
+defineEmits(['set-current-page']);
 
-const currentPage = ref(1);
+// const currentPage = ref(1);
 </script>
 
 <style lang="postcss">

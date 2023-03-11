@@ -1,8 +1,7 @@
 <template>
 	<Header :selected-value="selectSort" @update:selected-value="selectSort = $event" />
-	<Container v-if="!isLoading && data" :data="data" :select-sort="selectSort" @get-total-page="getTotalPage" />
-	<Pagination :total="totalPage" />
-	<p>{{ totalPage }}</p>
+	<Container v-if="!isLoading && data" :data="data" :current-page="currentPage" :select-sort="selectSort" @get-total-page="getTotalPage" />
+	<Pagination :total="totalPage" :current-page="currentPage" @set-current-page="setCurrentPage" />
 </template>
 
 <script lang="ts" setup>
@@ -10,19 +9,20 @@ import Header from '~/components/Header.vue';
 import Container from '~/components/Container/index.vue';
 import Pagination from '~/components/Pagination.vue';
 import { useGetData } from '~/vue-query/dummydata';
-import { provide, ref } from 'vue';
+import { ref } from 'vue';
 
 const { isLoading, data, isError } = useGetData();
 
-// selectSort
+// SelectSort
 const selectSort = ref('30');
-provide('page', 213);
-
 // TotalPage
 const totalPage = ref(0);
 const getTotalPage = (n: number) => {
 	totalPage.value = n;
 };
-
-// console.log('data', data.value);
+// CurrentPage
+const currentPage = ref(1);
+const setCurrentPage = (n: number) => {
+	currentPage.value = n;
+};
 </script>
