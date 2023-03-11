@@ -1,15 +1,11 @@
-<template>
-	<Header :render-modal="renderModal" :selected-value="selectSort" @set-render-modal="setRenderModal" @update:selected-value="selectSort = $event" />
-	<Container
-		v-if="data"
-		:render-modal="renderModal"
-		:data="data"
-		:current-page="currentPage"
-		:select-sort="selectSort"
-		@get-total-page="getTotalPage"
-	/>
-	<Pagination :total="totalPage" :current-page="currentPage" @set-current-page="setCurrentPage" />
-	<Modal :modal-is-open="modalIsOpen" :modal-data="modalData" @modal-change="modal.handleClick" />
+<template lang="pug">
+Header(:render-modal="renderModal", :selected-value="selectSort", @set-render-modal="setRenderModal", @update:selected-value="selectSort = $event")
+
+Container(v-if="data", :render-modal="renderModal", :data="data", :current-page="currentPage", :select-sort="selectSort", @get-total-page="getTotalPage")
+
+Pagination(:total="totalPage", :current-page="currentPage", @set-current-page="setCurrentPage")
+
+Modal(:modal-is-open="modalIsOpen", :modal-data="modalData", @modal-change="modal.handleClick")
 </template>
 
 <script lang="ts" setup>
@@ -18,8 +14,9 @@ import Container from '~/components/Container/index.vue';
 import Pagination from '~/components/Pagination.vue';
 import Modal from '~/components/Modal.vue';
 import { ref, watch, provide } from 'vue';
-import { Toggle } from '~/Type';
-import { TypeDummyData } from '~/vue-query/dummydata';
+// wip 使用 pug 模板無法直接引入 type
+// import { TypeDummyData } from '~/vue-query/dummydata';
+// import { Toggle } from '~/Type';
 
 const favoriteMemberStr = localStorage.getItem('favoriteMember');
 const data = favoriteMemberStr ? ref(JSON.parse(favoriteMemberStr)) : ref([]);
@@ -46,8 +43,8 @@ watch(selectSort, (val, oldVal) => {
 // Modal
 const modalIsOpen = ref(false);
 const modalData = ref();
-const modal: Toggle = {
-	handleClick: (value: TypeDummyData) => {
+const modal = {
+	handleClick: (value: any) => {
 		if (value) {
 			modalData.value = value;
 			modalIsOpen.value = true;
