@@ -5,8 +5,11 @@
 </template>
 
 <script setup lang="ts">
-// LocalStorageInit
+// LocalStorage Init
 if (!localStorage.getItem('selectSort')) {
 	localStorage.setItem('selectSort', '30');
+}
+if (!localStorage.getItem('favoriteSelectSort')) {
+	localStorage.setItem('favoriteSelectSort', '30');
 }
 </script>

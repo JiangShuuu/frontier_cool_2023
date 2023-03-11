@@ -28,17 +28,18 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-
+import { useRoute } from 'vue-router';
 // wip
 defineProps<{ selectedValue: any; renderModal: string }>();
-
 const emit = defineEmits(['update:selected-value', 'set-render-modal']);
+const routerPath = useRoute().fullPath;
 
-// wip
 function onChange(event: any) {
 	emit('update:selected-value', event.target.value);
-	localStorage.removeItem('currentPage');
-	localStorage.setItem('selectSort', event.target.value);
+	const pathCurrentPage = routerPath === '/' ? 'currentPage' : 'favoriteCurrentPage';
+	const pathSelectSort = routerPath === '/' ? 'selectSort' : 'favoriteSelectSort';
+	localStorage.removeItem(pathCurrentPage);
+	localStorage.setItem(pathSelectSort, event.target.value);
 }
 
 function modalChange(n: string) {
