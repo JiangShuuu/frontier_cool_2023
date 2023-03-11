@@ -62,7 +62,6 @@ provide('modalToggle', modal);
 // Card or List
 const renderModal = ref('card');
 const setRenderModal = (n: string) => {
-	console.log(n);
 	renderModal.value = n;
 };
 </script>
