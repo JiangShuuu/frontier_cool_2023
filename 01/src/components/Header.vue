@@ -5,10 +5,10 @@
 			<router-link to="/favorite" :class="[$route.path === '/' ? 'text-purple' : 'text-purple-light']">Favorite</router-link>
 		</div>
 		<div class="flex items-center space-x-2">
-			<select id="sort" name="" class="border-2 text-xs p-1 cursor-pointer">
+			<select id="sort" :value="selectedValue" name="sort" class="border-2 text-xs p-1 cursor-pointer" @change="onChange">
 				<option value="10">10</option>
-				<option value="20">20</option>
-				<option value="30">30</option>
+				<option value="30" default>30</option>
+				<option value="50">50</option>
 			</select>
 			<Icon
 				icon="ic:outline-grid-view"
@@ -30,5 +30,12 @@
 import { Icon } from '@iconify/vue';
 import { ref } from 'vue';
 
+defineProps<{ selectedValue: any }>();
+
 const modelchange = ref(true);
+const emit = defineEmits(['update:selected-value']);
+
+function onChange(event: any) {
+	emit('update:selected-value', event.target.value);
+}
 </script>

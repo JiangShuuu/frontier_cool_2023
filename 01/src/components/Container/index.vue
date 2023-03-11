@@ -1,26 +1,34 @@
 <template>
-	<div v-if="result" class="grid grid-cols-5 pt-5 justify-items-center">
-		<div v-for="item in result[page]" :key="item.id">
+	<div v-if="dummyResult" class="grid grid-cols-5 pt-5 justify-items-center">
+		<div v-for="item in dummyResult[page]" :key="item.id">
 			<Card :data="item" />
 		</div>
 	</div>
 </template>
+
 <script setup lang="ts">
 import Card from './Card.vue';
 import { TypeDummyData } from '~/vue-query/dummydata';
 import { chunk } from 'lodash-es';
+import { defineProps, watch, ref } from 'vue';
 
-const props = defineProps<{ data: TypeDummyData[] }>();
+const props = defineProps<{ data: TypeDummyData[]; selectSort: string }>();
 
-const sort = 10;
 const page = 1;
 
-function paginateData(data: TypeDummyData[], pageSize: number): { [page: number]: any }[] {
+const dummyResult = ref();
+
+watch(
+	() => props.selectSort,
+	(val, oldVal) => {
+		paginateData(props.data, Number(val));
+	}
+);
+
+function paginateData(data: TypeDummyData[], pageSize: number) {
 	const chunkedData = chunk(data, pageSize);
-	return chunkedData;
+	dummyResult.value = chunkedData;
 }
 
-const result = paginateData(props.data, sort);
-
-console.log('aa', result[0]);
+paginateData(props.data, Number(props.selectSort));
 </script>

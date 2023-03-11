@@ -1,6 +1,7 @@
 <template>
 	<!-- Header -->
-	<Header />
+	<!-- <Header /> -->
+	<div>123</div>
 </template>
 
 <script lang="ts" setup>
