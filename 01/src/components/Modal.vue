@@ -46,10 +46,12 @@
 							</div>
 						</div>
 						<div class="space-y-1">
-							<p>name:</p>
-							<p>email:</p>
-							<p>gender:</p>
-							<p>phone:</p>
+							<p>name: {{ modalData.name }}</p>
+							<p>age: {{ modalData.age }}</p>
+							<p>gender: {{ modalData.gender }}</p>
+							<p>birthday: {{ modalData.birthday }}</p>
+							<p>phone: {{ modalData.phone }}</p>
+							<p>email: {{ modalData.email }}</p>
 						</div>
 					</div>
 				</slot>
