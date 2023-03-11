@@ -130,8 +130,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue';
-
 defineProps<{ total: number; currentPage: number }>();
 defineEmits(['set-current-page']);
 </script>

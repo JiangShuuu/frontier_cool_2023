@@ -10,7 +10,7 @@
 import Card from './Card.vue';
 import { TypeDummyData } from '~/vue-query/dummydata';
 import { chunk } from 'lodash-es';
-import { defineProps, defineEmits, watch, ref } from 'vue';
+import { watch, ref } from 'vue';
 
 const props = defineProps<{ currentPage: number; data: TypeDummyData[]; selectSort: string }>();
 const emit = defineEmits(['get-total-page']);
