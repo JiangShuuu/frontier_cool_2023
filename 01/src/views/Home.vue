@@ -9,7 +9,7 @@ import Header from '~/components/Header.vue';
 import Container from '~/components/Container/index.vue';
 import Pagination from '~/components/Pagination.vue';
 import { useGetData } from '~/vue-query/dummydata';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const { isLoading, data, isError } = useGetData();
 
@@ -25,4 +25,8 @@ const currentPage = ref(1);
 const setCurrentPage = (n: number) => {
 	currentPage.value = n;
 };
+// watch
+watch(selectSort, (val, oldVal) => {
+	currentPage.value = 1;
+});
 </script>
