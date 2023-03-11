@@ -1,5 +1,5 @@
 <template>
-	<section class="mt-10 flex items-center justify-center space-x-2">
+	<section v-if="total" class="mt-10 flex items-center justify-center space-x-2">
 		<!-- prev -->
 		<button class="btn" :disabled="currentPage <= 1" @click="currentPage -= 1">
 			<p>&lt</p>
@@ -132,8 +132,10 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { defineProps } from 'vue';
 
-const total = ref(7);
+defineProps<{ total: number }>();
+
 const currentPage = ref(1);
 </script>
 

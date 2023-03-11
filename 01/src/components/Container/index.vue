@@ -10,13 +10,15 @@
 import Card from './Card.vue';
 import { TypeDummyData } from '~/vue-query/dummydata';
 import { chunk } from 'lodash-es';
-import { defineProps, watch, ref } from 'vue';
+import { defineProps, defineEmits, watch, ref } from 'vue';
 
 const props = defineProps<{ data: TypeDummyData[]; selectSort: string }>();
 
 const page = 1;
 
 const dummyResult = ref();
+
+const emit = defineEmits(['get-total-page']);
 
 watch(
 	() => props.selectSort,
@@ -28,6 +30,7 @@ watch(
 function paginateData(data: TypeDummyData[], pageSize: number) {
 	const chunkedData = chunk(data, pageSize);
 	dummyResult.value = chunkedData;
+	emit('get-total-page', dummyResult.value.length);
 }
 
 paginateData(props.data, Number(props.selectSort));
