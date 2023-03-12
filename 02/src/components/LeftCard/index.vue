@@ -8,11 +8,11 @@
     <div v-for="(item, index) in input.items" :key="index">
       <label>
         Key:
-        <input type="text" v-model="item.key" @input="generateObject()">
+        <input type="text" v-model="item.key" @input="generateOutput()">
       </label>
       <label>
         Value:
-        <input type="text" v-model="item.value" @input="generateObject()">
+        <input type="text" v-model="item.value" @input="generateOutput()">
       </label>
     </div>
     <button @click="addItem">Add Item</button>
@@ -39,7 +39,7 @@ function addItem() {
   input.items.push({ key: '', value: '' });
 }
 
-function generateObject() {
+function generateOutput() {
   input.output = {};
 
   input.items.forEach((item:any) => {
@@ -47,6 +47,7 @@ function generateObject() {
       let objRef = input.output as any;
       const keys = item.key.split('.');
       keys.forEach((key:any, index:any) => {
+        if (!key) return
         if (index === keys.length - 1) {
           objRef[key] = item.value;
         } else {
