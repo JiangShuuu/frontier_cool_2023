@@ -4,9 +4,6 @@
       <button class="bg-white px-2 py-2.5 font-bold">+ Add New Pair</button>
     </div>
     <Card /> -->
-    <div v-for="(item, index) in input.output" :key="index">
-      <p>{{ item }}</p>
-    </div>
     <div>
       <div v-for="(item, index) in input.items" :key="index">
         <label>
@@ -19,14 +16,25 @@
         </label>
       </div>
       <button @click="addItem">Add Item</button>
-      <div>
+      <!-- <div>
         <pre>{{ input.output }}</pre>
-      </div>
+      </div> -->
     </div>
+    <pre>{{ input.output }}</pre>
+    <div>
+      <ul>
+        <li v-for="(value, key) in input.output" :key="key">
+          <span class="key">{{ key }}:</span>
+          <RecursiveComponent :data="value" />
+        </li>
+      </ul>
+    </div>
+    <!-- <RecursiveComponent :data="input.output" /> -->
   </div>
 </template>
 <script lang="ts" setup>
 import Card from './Card.vue'
+import RecursiveComponent from './RecursiveComponent.vue';
 import { ref, reactive } from 'vue'
 
 const input = reactive({
@@ -70,3 +78,23 @@ function generateOutput() {
 }
 
 </script>
+
+<style lang="postcss" scoped>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-left: 1em;
+}
+
+.key {
+  color: blue;
+}
+
+.value {
+  color: green;
+}
+</style>
