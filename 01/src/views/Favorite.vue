@@ -1,8 +1,8 @@
 <template lang="pug">
 Head
-	title 我的最愛 - Frontier_前端測驗01
+	title 我的收藏 - Frontier_前端測驗01
 	meta(key="description" name="description" content="Frontier_前端測驗_2023")
-	meta(key="og:title" property="og:title" content="我的最愛 - Frontier_前端測驗01")
+	meta(key="og:title" property="og:title" content="我的收藏 - Frontier_前端測驗01")
 	meta(key="og:description" name="og:description" content="Frontier_前端測驗_2023")
 	meta(key="og:site_name" property="og:site_name" content="Frontier_前端測驗_2023")
 Header(:render-modal="renderModal", :selected-value="selectSort", @set-render-modal="setRenderModal", @update:selected-value="selectSort = $event")
