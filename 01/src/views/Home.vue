@@ -6,13 +6,17 @@ Head
 	meta(key="og:description" name="og:description" content="Frontier_前端測驗_2023")
 	meta(key="og:site_name" property="og:site_name" content="Frontier_前端測驗_2023")
 Header(:render-modal="renderModal", :selected-value="selectSort", @set-render-modal="setRenderModal", @update:selected-value="selectSort = $event")
+Loading(v-if="isLoading")
+Error(v-if="isError")
 Container(v-if="!isLoading && data", :render-modal="renderModal", :data="data", :current-page="currentPage", :select-sort="selectSort", @get-total-page="getTotalPage")
 Pagination(:total="totalPage", :current-page="currentPage", @set-current-page="setCurrentPage")
 Modal(:modal-is-open="modalIsOpen", :modal-data="modalData", @modal-change="modal.handleClick")
 </template>
 
 <script lang="ts" setup>
+import Error from '~/components/Error.vue';
 import Header from '~/components/Header.vue';
+import Loading from '~/components/Loading.vue';
 import Container from '~/components/Container/index.vue';
 import Pagination from '~/components/Pagination.vue';
 import Modal from '~/components/Modal.vue';
