@@ -1,6 +1,8 @@
 # 2023_Frontier_前端測驗_01
 
 ## Random User
+### 部署網址
+https://stately-malabi-43e7bd.netlify.app/
 ### 指定功能
 #### 首頁
    - 以總數 3010 筆，並且可以自由選擇以每頁 10/30/50 筆資料呈現 (預設 30 筆)。
