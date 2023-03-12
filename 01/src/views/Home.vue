@@ -1,4 +1,10 @@
 <template lang="pug">
+Head
+	title 首頁 - Frontier_前端測驗01
+	meta(key="description" name="description" content="Frontier_前端測驗_2023")
+	meta(key="og:title" property="og:title" content="首頁 - Frontier_前端測驗01")
+	meta(key="og:description" name="og:description" content="Frontier_前端測驗_2023")
+	meta(key="og:site_name" property="og:site_name" content="Frontier_前端測驗_2023")
 Header(:render-modal="renderModal", :selected-value="selectSort", @set-render-modal="setRenderModal", @update:selected-value="selectSort = $event")
 Container(v-if="!isLoading && data", :render-modal="renderModal", :data="data", :current-page="currentPage", :select-sort="selectSort", @get-total-page="getTotalPage")
 Pagination(:total="totalPage", :current-page="currentPage", @set-current-page="setCurrentPage")
@@ -12,6 +18,7 @@ import Pagination from '~/components/Pagination.vue';
 import Modal from '~/components/Modal.vue';
 import { useGetData } from '~/vue-query/dummydata';
 import { ref, watch, provide } from 'vue';
+import { Head } from '@vueuse/head';
 // wip 使用 pug 模板無法直接引入 type
 // import { TypeDummyData } from '~/vue-query/dummydata';
 // import { Toggle } from '~/Type';
