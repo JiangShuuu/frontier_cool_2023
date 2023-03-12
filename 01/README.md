@@ -33,7 +33,29 @@
    - tailwindcss: css 切版使用
    - eslint: 用於限制格式
    - prettier: 用於整理格式
-### 如何執行
-   1. 
-   2. 
-   3. 
+## 如何執行本專案
+### 使用 node 版本 
+   - node v16.18.1, yarn 1.22.19, npm 8.19.2
+### 執行步驟
+1. 開啟終端機建立資料夾或到指定存放位置
+2. 在該資料夾位置，將專案 clone 到本地
+   ```
+   git clone https://github.com/JiangShuuu/frontier_cool_2023.git
+   ```
+3. 進入專案後 yarn or npm install
+   ```
+   cd 01
+   yarn 
+   ```
+4. 安裝完成後，開啟專案
+   ```
+   yarn dev
+   ```
+#### 終端機顯示此行訊息代表成功運行，打開瀏覽器進入網址：
+```
+  VITE v4.1.4  ready in 174 ms
+
+  ➜  Local:   http://127.0.0.1:5173/
+  ➜  Network: use --host to expose
+  ➜  press h to show help
+```
