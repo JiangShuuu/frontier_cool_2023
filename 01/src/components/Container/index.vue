@@ -1,16 +1,8 @@
-<template>
-	<div v-if="dummyResult" :class="renderModal === 'card' ? gridStyle : listStyle">
-		<div v-for="item in dummyResult[currentPage - 1]" :key="item.id">
-			<Card
-				v-if="renderModal === 'card'"
-				:data="item"
-				:is-favorite="findFoverite(item)"
-				@add-favorite="addFavorite"
-				@remove-favorite="removeFavorite"
-			/>
-			<List v-else :data="item" :is-favorite="findFoverite(item)" @add-favorite="addFavorite" @remove-favorite="removeFavorite" />
-		</div>
-	</div>
+<template lang="pug">
+div(v-if="dummyResult" :class="renderModal === 'card' ? gridStyle : listStyle")
+  div(v-for="item in dummyResult[currentPage - 1]" :key="item.id")
+    Card(v-if="renderModal === 'card'" :data="item" :is-favorite="findFoverite(item)" @add-favorite="addFavorite" @remove-favorite="removeFavorite")
+    List(v-else :data="item" :is-favorite="findFoverite(item)" @add-favorite="addFavorite" @remove-favorite="removeFavorite")
 </template>
 
 <script setup lang="ts">
