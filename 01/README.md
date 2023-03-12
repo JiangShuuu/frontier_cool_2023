@@ -10,26 +10,30 @@
    - 可將任意使用者資料添加至我的收藏中。
    - 可將已添加至我的收藏的資料取消收藏。
    - 重新整理網頁會維持以下條件：
-     - 每頁呈現幾筆。
-     - 分頁。
-     - 顯示模式。
+      - 每頁呈現幾筆。
+      - 分頁。
+      - 顯示模式。
+#### 我的收藏
+   - 取消收藏功能。
+   - 其餘功能體驗與首頁一致。
 
-○ 我的收藏
-■ 取消收藏功能。
-■ 其餘功能體驗與首頁一致。
-
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support For `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+### 特別說明 & 遇到的困難
+   - 由於一次呼叫 API 拿 3010 筆資料, 短時間換頁約5~6次後會造成 429錯誤, 故使用 "vue-query" 做前端快取, 避免換頁時造成 429, 目前預設快取時間為 30 秒
+   - 第二次使用 pug 切版, 花了一點時間上手
+   - 近期比較常使用 React, 也花了一點時間找回 Vue 的熟悉感
+   - (待解) 使用 pug 後, 無法在 .vue 內直接 import Type, 目前還未知原因, 但因不影響需求, 故暫時以 wip 註解起來
+   - (待解) inject 的 Type 使用方式待查詢, 因不影響需求, 故暫時以 wip 註解起來
+### 使用套件
+   - vue-router: 用於路由切換
+   - tanstack/vue-query: 用於前端資料快取
+   - lodash-es: 用於資料格式整理
+   - vueuse/head: 用於頁面 SEO
+   - axios: 用於呼叫 api
+   - pug: 題目版型需求
+   - tailwindcss: css 切版使用
+   - eslint: 用於限制格式
+   - prettier: 用於整理格式
+### 如何執行
+   1. 
+   2. 
+   3. 
