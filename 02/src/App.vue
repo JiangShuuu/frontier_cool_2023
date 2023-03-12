@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black h-screen py-10 px-14">
+  <div class="bg-blue-dark h-screen py-6 px-20">
     <router-view />
   </div>
 </template>
