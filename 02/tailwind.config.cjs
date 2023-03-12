@@ -10,15 +10,16 @@ module.exports = {
 				pink: {
 					DEFAULT: '#FA90A0',
 				},
-				black: {
-					DEFAULT: '#0D1220',
-				},
         blue: {
           DEFAULT: '#516178',
+          dark: '#0D1220'
         },
 				white: {
 					DEFAULT: '#DBE2EC',
           dark: '#C0CBDA',
+				},
+        gray: {
+					DEFAULT: '#DCE2E8',
 				},
 			},
 		},
