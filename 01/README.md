@@ -1,6 +1,23 @@
-# Frontier_前端測驗_2023_01
+# 2023_Frontier_前端測驗_01
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Random User
+### 指定功能
+#### 首頁
+   - 以總數 3010 筆，並且可以自由選擇以每頁 10/30/50 筆資料呈現 (預設 30 筆)。
+   - 可以切換 Card 和 List 模式 (預設為 Card 模式)。
+   - Card 和 List 中顯示的資訊和可自由發揮，其中只要求一定要有 User 的頭像。
+   - 點擊每一筆資料時會開啟一個 User 詳細資訊的 Modal，而點擊右上角的 X icon 或點擊 Modal 外的任意處皆可將Modal 關閉。
+   - 可將任意使用者資料添加至我的收藏中。
+   - 可將已添加至我的收藏的資料取消收藏。
+   - 重新整理網頁會維持以下條件：
+     - 每頁呈現幾筆。
+     - 分頁。
+     - 顯示模式。
+
+○ 我的收藏
+■ 取消收藏功能。
+■ 其餘功能體驗與首頁一致。
+
 
 ## Recommended IDE Setup
 
