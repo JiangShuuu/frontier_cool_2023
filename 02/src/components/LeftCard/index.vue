@@ -4,22 +4,25 @@
       <button class="bg-white px-2 py-2.5 font-bold">+ Add New Pair</button>
     </div>
     <Card /> -->
-    <div>
-    <div v-for="(item, index) in input.items" :key="index">
-      <label>
-        Key:
-        <input type="text" v-model="item.key" @input="generateOutput()">
-      </label>
-      <label>
-        Value:
-        <input type="text" v-model="item.value" @input="generateOutput()">
-      </label>
+    <div v-for="(item, index) in input.output" :key="index">
+      <p>{{ item }}</p>
     </div>
-    <button @click="addItem">Add Item</button>
     <div>
-      <pre>{{ input.output }}</pre>
+      <div v-for="(item, index) in input.items" :key="index">
+        <label>
+          Key:
+          <input type="text" v-model="item.key" @input="generateOutput()">
+        </label>
+        <label>
+          Value:
+          <input type="text" v-model="item.value" @input="generateOutput()">
+        </label>
+      </div>
+      <button @click="addItem">Add Item</button>
+      <div>
+        <pre>{{ input.output }}</pre>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -32,7 +35,7 @@ const input = reactive({
     { key: 'a.b.d', value: '2' },
     { key: 'a.e.f', value: '3' }
   ],
-  output: {}
+  output: []
 });
 
 function addItem() {
@@ -40,21 +43,26 @@ function addItem() {
 }
 
 function generateOutput() {
-  input.output = {};
+  input.output = [];
 
   input.items.forEach((item:any) => {
-    if (item.key && item.value) {
-      let objRef = input.output as any;
+    if (item.key) {
+      const obj:any = {};
       const keys = item.key.split('.');
+      obj[keys[keys.length-1]] = item.value;
+
+      let arrRef = input.output as any;
       keys.forEach((key:any, index:any) => {
         if (!key) return
         if (index === keys.length - 1) {
-          objRef[key] = item.value;
+          arrRef.push(obj);
         } else {
-          if (!objRef.hasOwnProperty(key)) {
-            objRef[key] = {};
+          let objRef = arrRef.find((a:any) => a[key] !== undefined);
+          if (!objRef) {
+            objRef = {};
+            arrRef.push(objRef);
           }
-          objRef = objRef[key];
+          arrRef = objRef[key] = objRef[key] || [];
         }
       });
     }
