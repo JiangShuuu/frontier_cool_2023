@@ -20,16 +20,8 @@
         <pre>{{ input.output }}</pre>
       </div> -->
     </div>
-    <pre>{{ input.output }}</pre>
-    <div>
-      <ul>
-        <li v-for="(value, key) in input.output" :key="key">
-          <span class="key">{{ key }}:</span>
-          <RecursiveComponent :data="value" />
-        </li>
-      </ul>
-    </div>
-    <!-- <RecursiveComponent :data="input.output" /> -->
+    <!-- <pre>{{ input.output }}</pre> -->
+    <RecursiveComponent :data="input.output" />
   </div>
 </template>
 <script lang="ts" setup>
