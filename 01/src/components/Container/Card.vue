@@ -32,7 +32,7 @@ import { Toggle } from '~/Type';
 defineEmits(['add-favorite', 'remove-favorite']);
 defineProps<{ data: TypeDummyData; isFavorite: boolean }>();
 
-// wip
+// wip inject Event Type
 const { handleClick }: any = inject<Toggle>('modalToggle');
 
 const loading = ref(true);

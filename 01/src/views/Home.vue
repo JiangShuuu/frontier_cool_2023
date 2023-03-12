@@ -1,10 +1,7 @@
 <template lang="pug">
 Header(:render-modal="renderModal", :selected-value="selectSort", @set-render-modal="setRenderModal", @update:selected-value="selectSort = $event")
-
 Container(v-if="!isLoading && data", :render-modal="renderModal", :data="data", :current-page="currentPage", :select-sort="selectSort", @get-total-page="getTotalPage")
-
 Pagination(:total="totalPage", :current-page="currentPage", @set-current-page="setCurrentPage")
-
 Modal(:modal-is-open="modalIsOpen", :modal-data="modalData", @modal-change="modal.handleClick")
 </template>
 
@@ -18,6 +15,21 @@ import { ref, watch, provide } from 'vue';
 // wip 使用 pug 模板無法直接引入 type
 // import { TypeDummyData } from '~/vue-query/dummydata';
 // import { Toggle } from '~/Type';
+
+// 替代方案 Type
+interface TypeDummyData {
+	id: string;
+	name: string;
+	avatar: string;
+	age: number;
+	phone: string;
+	birthday: string;
+	email: string;
+	gender: string;
+}
+interface Toggle {
+	handleClick: (value: TypeDummyData) => void;
+}
 
 const { isLoading, data, isError } = useGetData();
 
@@ -43,8 +55,8 @@ watch(selectSort, (val, oldVal) => {
 // Modal
 const modalIsOpen = ref(false);
 const modalData = ref();
-const modal = {
-	handleClick: (value: any) => {
+const modal: Toggle = {
+	handleClick: (value: TypeDummyData) => {
 		if (value) {
 			modalData.value = value;
 			modalIsOpen.value = true;

@@ -15,12 +15,17 @@ section(class="flex items-center justify-between")
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { useRoute } from 'vue-router';
-// wip
-defineProps<{ selectedValue: any; renderModal: string }>();
+
+interface MyChangeEvent {
+	target: HTMLSelectElement;
+	value: string;
+}
+
+defineProps<{ selectedValue: string; renderModal: string }>();
 const emit = defineEmits(['update:selected-value', 'set-render-modal']);
 const routerPath = useRoute().fullPath;
 
-function onChange(event: any) {
+function onChange(event: MyChangeEvent) {
 	emit('update:selected-value', event.target.value);
 	const pathCurrentPage = routerPath === '/' ? 'currentPage' : 'favoriteCurrentPage';
 	const pathSelectSort = routerPath === '/' ? 'selectSort' : 'favoriteSelectSort';
