@@ -80,9 +80,22 @@ div(
 </template>
 
 <script lang="ts" setup>
-import { TypeDummyData } from '~/vue-query/dummydata';
 import { Icon } from '@iconify/vue';
 import { ref } from 'vue';
+// wip 使用 pug 模板無法直接引入 type
+// import { TypeDummyData } from '~/vue-query/dummydata';
+
+// 替代方案 Type
+interface TypeDummyData {
+	id: string;
+	name: string;
+	avatar: string;
+	age: number;
+	phone: string;
+	birthday: string;
+	email: string;
+	gender: string;
+}
 
 defineEmits(['modal-change']);
 defineProps<{ modalIsOpen: boolean; modalData: TypeDummyData }>();

@@ -8,9 +8,23 @@ div(v-if="dummyResult" :class="renderModal === 'card' ? gridStyle : listStyle")
 <script setup lang="ts">
 import Card from './Card.vue';
 import List from './List.vue';
-import { TypeDummyData } from '~/vue-query/dummydata';
 import { chunk } from 'lodash-es';
 import { watch, ref } from 'vue';
+
+// wip 使用 pug 模板無法直接引入 type
+// import { TypeDummyData } from '~/vue-query/dummydata';
+
+// 替代方案 Type
+interface TypeDummyData {
+	id: string;
+	name: string;
+	avatar: string;
+	age: number;
+	phone: string;
+	birthday: string;
+	email: string;
+	gender: string;
+}
 
 const props = defineProps<{ currentPage: number; data: TypeDummyData[]; selectSort: string; renderModal: string }>();
 const emit = defineEmits(['get-total-page']);

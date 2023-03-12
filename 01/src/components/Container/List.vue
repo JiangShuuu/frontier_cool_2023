@@ -31,10 +31,26 @@ div(class="h-40 border flex justify-between")
 </template>
 
 <script lang="ts" setup>
-import { TypeDummyData } from '~/vue-query/dummydata';
 import { Icon } from '@iconify/vue';
 import { ref, inject } from 'vue';
-import { Toggle } from '~/Type';
+// wip 使用 pug 模板無法直接引入 type
+// import { TypeDummyData } from '~/vue-query/dummydata';
+// import { Toggle } from '~/Type';
+
+// 替代方案 Type
+interface TypeDummyData {
+	id: string;
+	name: string;
+	avatar: string;
+	age: number;
+	phone: string;
+	birthday: string;
+	email: string;
+	gender: string;
+}
+interface Toggle {
+	handleClick: (value: TypeDummyData) => void;
+}
 
 defineEmits(['add-favorite', 'remove-favorite']);
 defineProps<{ data: TypeDummyData; isFavorite: boolean }>();
