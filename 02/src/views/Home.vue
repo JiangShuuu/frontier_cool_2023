@@ -1,16 +1,11 @@
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="../assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-    <div class="border">
-      <router-link to="/about">Go to About</router-link>
+  <main class="space-y-2">
+    <h1 class="text-white text-2xl font-bold">Nested Key-Value Pair Tree Viewer</h1>
+    <div class="grid grid-cols-2 gap-8 min-h-[700px]">
+      <section class="border border-blue">1</section>
+      <section class="border border-blue">2</section>
     </div>
-  </div>
-  <HelloWorld msg="Vite + Vue02" />
+  </main>
 </template>
 
 <script setup lang="ts"></script>
