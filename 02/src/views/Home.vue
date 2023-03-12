@@ -1,28 +1,3 @@
-<script setup lang="ts">
-import HelloWorld from '../components/HelloWorld.vue';
-import axios from 'axios';
-import { useQueryClient, useQuery, useMutation } from '@tanstack/vue-query';
-// Access QueryClient instance
-const queryClient = useQueryClient();
-
-const getData = async () => {
-  const { data } = await axios.get('https://swapi.dev/api/people/9');
-  return data;
-};
-
-// Query
-const { isLoading, isError, data, error } = useQuery({
-  queryKey: ['todos_01'],
-  queryFn: getData,
-  // 快取保留時間 20秒
-  staleTime: 20 * 1000,
-  // 切回換視窗,頁面即時更新
-  refetchOnWindowFocus: false
-});
-
-console.log('data', data);
-</script>
-
 <template>
   <div>
     <a href="https://vitejs.dev" target="_blank">
@@ -34,10 +9,12 @@ console.log('data', data);
     <div class="border">
       <router-link to="/about">Go to About</router-link>
     </div>
-    <p v-if="!isLoading">name: {{ data.name }}</p>
   </div>
   <HelloWorld msg="Vite + Vue02" />
 </template>
+
+<script setup lang="ts"></script>
+
 
 <style scoped>
 .logo {
