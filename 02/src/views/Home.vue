@@ -4,7 +4,6 @@ main.space-y-2
   section(class="grid grid-cols-2 gap-8 min-h-[700px]")
     LeftCard(:items="input.items" @add-item="addItem")
     RightCard(:output="input.output")
-    span.text-pink.ml-2 {{ input.output }}
 </template>
 
 <script setup lang="ts">
