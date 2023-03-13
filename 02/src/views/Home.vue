@@ -80,6 +80,7 @@ const modal: any = {
   removeItem: (data: TypeItem) => {
     const itemNews = input.items.filter((item: TypeItem) => item.uuid !== data.uuid)
     input.items = itemNews
+    modal.generateOutput()
   }
 };
 
