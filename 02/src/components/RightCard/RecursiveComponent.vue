@@ -32,9 +32,9 @@ const isObject = (value:any) => {
 
 const objectLength = (value: any) => {
   if (typeof value === 'object' ) {
-    return true
+    return value.length
   } else {
-    return false
+    return 0
   }
 }
 </script>
