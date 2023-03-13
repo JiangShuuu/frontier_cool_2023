@@ -1,8 +1,8 @@
-# 2023_Frontier_前端測驗_01
+# 2023_Frontier_前端測驗_02
 
-## Random User
+## Nested Key-Value Pair Tree Viewer
 ### 部署網址
-https://stately-malabi-43e7bd.netlify.app/
+https://deft-axolotl-d3570b.netlify.app/
 ### 指定功能
    - 畫面分為兩側，一側為輸入區，一側為預覽區。
    - 輸入區中，每行 (Pair) 有兩個輸入框，一個用來輸入 Key，另一個用來輸入 Value。
