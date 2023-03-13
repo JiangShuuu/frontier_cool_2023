@@ -67,7 +67,6 @@ const modal: any = {
   }
 };
 
-
 provide('generate', modal)
 
 </script>

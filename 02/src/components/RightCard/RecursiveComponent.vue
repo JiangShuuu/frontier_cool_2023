@@ -29,6 +29,14 @@ const isNumber = (type:any) => {
 const isObject = (value:any) => {
   return typeof value === 'object' && value !== null;
 }
+
+const objectLength = (value: any) => {
+  if (typeof value === 'object' ) {
+    return true
+  } else {
+    return false
+  }
+}
 </script>
 
 <style lang="postcss" scoped>
