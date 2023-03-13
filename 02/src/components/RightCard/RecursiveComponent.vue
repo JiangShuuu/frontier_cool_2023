@@ -1,12 +1,14 @@
 <template>
-  <div class="recursive-component">
+  <div class="recursive-component text-lg">
     <div v-for="(value, key) in data" :key="key" class="recursive-component__item">
-      <span v-if="isNumber(key)" class="recursive-component__key">
-        {{ key }}:
+      <span v-if="isNumber(key)" class="recursive-component__key flex">
+        {{ key }}: <p @click="toggleOpen()">+</p>
       </span>
       <span class="recursive-component__value">
         <template v-if="isObject(value)">
-          <RecursiveComponent :data="value" :level="level + 1" />
+          <template v-if="isOpen">
+            <RecursiveComponent :data="value" :level="level + 1" />
+          </template>
         </template>
         <template v-else>
           <span class="text-pink">{{ value }}</span>
@@ -17,10 +19,17 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 const props = defineProps({
   data: { required: true },
   level: { type: Number, required: false, default: 0},
 });
+
+const isOpen = ref(true)
+
+const toggleOpen = () => {
+  isOpen.value = !isOpen.value
+}
 
 const isNumber = (type:any) => {
   return typeof type !== 'number'
