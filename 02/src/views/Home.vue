@@ -4,6 +4,7 @@ main.space-y-2
   section(class="grid grid-cols-2 gap-8 min-h-[700px]")
     LeftCard(:items="input.items" @add-item="addItem")
     RightCard(:output="input.output")
+    span.text-pink.ml-2 {{ input.output }}
 </template>
 
 <script setup lang="ts">
@@ -26,10 +27,10 @@ onMounted(() => {
 const input = reactive({
   items: [
     { uuid: uuidv4(), key: 'nav.header.creator', value: '3D Fabric Creator' },
-    { uuid: uuidv4(),key: 'nav.icon', value: 'Icon name' },
-    { uuid: uuidv4(),key: 'nav.header.product', value: 'Product' },
-    { uuid: uuidv4(),key: 'common.feature.experience', value: 'Try It Now!' },
-    { uuid: uuidv4(),key: 'common.feature.chooseFabric', value: 'Choose Fabric' }
+    { uuid: uuidv4(), key: 'nav.icon', value: 'Icon name' },
+    { uuid: uuidv4(), key: 'nav.header.product', value: 'Product' },
+    { uuid: uuidv4(), key: 'common.feature.experience', value: 'Try It Now!' },
+    { uuid: uuidv4(), key: 'common.feature.chooseFabric', value: 'Choose Fabric' }
   ],
   output: []
 });
