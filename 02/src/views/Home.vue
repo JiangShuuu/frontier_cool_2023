@@ -11,21 +11,22 @@
 <script setup lang="ts">
 import LeftCard from '~/components/LeftCard/index.vue'
 import RightCard from '~/components/RightCard/index.vue'
-import { ref, reactive, onMounted, provide } from 'vue'
+import { reactive, onMounted, provide } from 'vue'
+import { v4 as uuidv4 } from 'uuid';
 
 const input = reactive({
   items: [
-    { key: 'nav.header.creator', value: '3D Fabric Creator' },
-    { key: 'nav.icon', value: 'Icon name' },
-    { key: 'nav.header.product', value: 'Product' },
-    { key: 'common.feature.experience', value: 'Try It Now!' },
-    { key: 'common.feature.chooseFabric', value: 'Choose Fabric' }
+    { uuid: uuidv4(), key: 'nav.header.creator', value: '3D Fabric Creator' },
+    { uuid: uuidv4(),key: 'nav.icon', value: 'Icon name' },
+    { uuid: uuidv4(),key: 'nav.header.product', value: 'Product' },
+    { uuid: uuidv4(),key: 'common.feature.experience', value: 'Try It Now!' },
+    { uuid: uuidv4(),key: 'common.feature.chooseFabric', value: 'Choose Fabric' }
   ],
   output: []
 });
 
 function addItem() {
-  input.items.push({ key: '', value: '' });
+  input.items.push({ uuid: uuidv4(), key: '', value: '' });
 }
 
 onMounted(() => {
@@ -60,7 +61,8 @@ const modal: any = {
     });
   },
   removeItem: (data:any) => {
-    input.items.filter((item:any) => item.key !== data.key)
+    const itemNews = input.items.filter((item:any) => item.uuid !== data.uuid)
+    input.items = itemNews
   }
 };
 
