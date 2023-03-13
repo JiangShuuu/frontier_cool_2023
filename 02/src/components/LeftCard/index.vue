@@ -1,12 +1,9 @@
-<template>
-  <div class="border border-blue ">
-    <div class="flex items-center justify-end p-3">
-      <button class="bg-white px-2 py-2.5 font-bold" @click="$emit('add-item')">+ Add New Pair</button>
-    </div>
-    <div v-for="(item, index) in items" :key="index">
-      <Card :item="item"/>
-    </div>
-  </div>
+<template lang="pug">
+div.border.border-blue
+  div.flex.items-center.justify-end.p-3
+    button(class="bg-white px-2 py-2.5 font-bold" @click="$emit('add-item')") + Add New Pair
+  template(v-for="(item, index) in items" :key="index")
+    Card(:item="item")
 </template>
 <script lang="ts" setup>
 import Card from './Card.vue'

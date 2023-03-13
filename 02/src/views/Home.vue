@@ -1,11 +1,9 @@
-<template>
-  <main class="space-y-2">
-    <h1 class="text-white text-2xl font-bold">Nested Key-Value Pair Tree Viewer</h1>
-    <section class="grid grid-cols-2 gap-8 min-h-[700px]">
-      <LeftCard :items="input.items" @add-item="addItem" />
-      <RightCard :output="input.output" />
-    </section>
-  </main>
+<template lang="pug">
+main.space-y-2
+  h1.text-white.text-2xl.font-bold Nested Key-Value Pair Tree Viewer
+  section(class="grid grid-cols-2 gap-8 min-h-[700px]")
+    LeftCard(:items="input.items" @add-item="addItem")
+    RightCard(:output="input.output")
 </template>
 
 <script setup lang="ts">

@@ -1,21 +1,17 @@
-<template>
-  <div class="ml-3 text-lg">
-    <div v-for="(value, key) in data" :key="key" class="my-1">
-      <span v-if="isNumber(key)" class="font-bold">
-        {{ key }} : <span v-if="objectLength(value)" @click="toggleOpen()" class="cursor-pointer">{{ isOpen ? '[-]' : '[+]' }}</span>
-      </span>
-      <span class="recursive-component__value">
-        <template v-if="isObject(value)">
-          <template v-if="isOpen">
-            <RecursiveComponent :data="value" :level="level + 1" />
-          </template>
-        </template>
-        <template v-else>
-          <span class="text-pink ml-2">{{ value }}</span>
-        </template>
-      </span>
-    </div>
-  </div>
+<template lang="pug">
+div.ml-3.text-lg
+  template(v-for="(value, key) in data" :key="key")
+    div.my-1
+      span.font-bold(v-if="isNumber(key)")
+        | {{ key }} :
+        span(v-if="objectLength(value)" @click="toggleOpen()" class="cursor-pointer")
+          | {{ isOpen ? '[-]' : '[+]' }}
+      span.recursive-component__value
+        template(v-if="isObject(value)")
+          template(v-if="isOpen")
+            RecursiveComponent(:data="value" :level="level + 1")
+        template(v-else)
+          span.text-pink.ml-2 {{ value }}
 </template>
 
 <script setup lang="ts">
