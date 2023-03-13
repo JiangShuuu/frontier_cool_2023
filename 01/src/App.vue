@@ -1,7 +1,6 @@
-<template>
-	<div class="px-10 py-5">
-		<router-view />
-	</div>
+<template lang="pug">
+div.px-10.py-5 
+	router-view
 </template>
 
 <script setup lang="ts">
