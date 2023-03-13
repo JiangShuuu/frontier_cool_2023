@@ -21,6 +21,7 @@ https://stately-malabi-43e7bd.netlify.app/
    - 其餘功能體驗與首頁一致。
 
 ### 特別說明 & 遇到的困難
+   - 部署 netlify 時, 由於使用 vue-router ,需要在 public 新增一支 _redirects 檔案, 避免路徑錯誤
    - 由於一次呼叫 API 拿 3010 筆資料, 短時間換頁約5~6次後會造成 429錯誤, 故使用 "vue-query" 做前端快取, 避免換頁時造成 429, 目前預設快取時間為 30 秒
    - 第二次使用 pug 切版, 花了一點時間上手
    - 近期比較常使用 React, 也花了一點時間找回 Vue 的熟悉感
