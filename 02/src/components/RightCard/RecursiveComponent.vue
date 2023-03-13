@@ -1,15 +1,15 @@
 <template>
   <div class="recursive-component">
     <div v-for="(value, key) in data" :key="key" class="recursive-component__item">
-      <span v-if="typeof key !=='number'" class="recursive-component__key">
+      <span v-if="typeof key !== 'number'" class="recursive-component__key">
         {{ key }}:
       </span>
-      <span class="recursive-component__value">
+      <span class="recursive-component__value ">
         <template v-if="isObject(value)">
           <RecursiveComponent :data="value" :level="level + 1" />
         </template>
         <template v-else>
-          {{ value }}
+          <span class="text-pink">{{ value }}</span>
         </template>
       </span>
     </div>
