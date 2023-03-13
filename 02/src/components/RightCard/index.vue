@@ -1,5 +1,5 @@
 <template>
-  <div class="border border-blue text-white">
+  <div class="border border-blue text-white pt-8">
     <RecursiveComponent :data="output" />
   </div>
 </template>

@@ -1,8 +1,8 @@
 <template>
-  <div class="recursive-component text-lg">
-    <div v-for="(value, key) in data" :key="key" class="recursive-component__item">
-      <span v-if="isNumber(key)" class="recursive-component__key flex">
-        {{ key }}: <p v-if="objectLength(value)" @click="toggleOpen()" class="cursor-pointer">{{ isOpen ? '[-]' : '[+]' }}</p>
+  <div class="ml-3 text-lg">
+    <div v-for="(value, key) in data" :key="key" class="my-1">
+      <span v-if="isNumber(key)" class="font-bold">
+        {{ key }}: <span v-if="objectLength(value)" @click="toggleOpen()" class="cursor-pointer">{{ isOpen ? '[-]' : '[+]' }}</span>
       </span>
       <span class="recursive-component__value">
         <template v-if="isObject(value)">
@@ -47,16 +47,4 @@ const objectLength = (value: any) => {
   }
 }
 </script>
-
-<style lang="postcss" scoped>
-.recursive-component {
-  margin-left: 10px;
-}
-.recursive-component__key {
-  font-weight: bold;
-}
-.recursive-component__item {
-  margin-bottom: 5px;
-}
-</style>
 
