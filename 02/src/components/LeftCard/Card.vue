@@ -4,7 +4,7 @@
       <input type="text" v-model="item.key" @input="generateOutput()" class="bg-transparent outline-none border text-slate-200 border-slate-500 text-base px-2 py-1 w-full" placeholder="Key" />
       <input type="text" v-model="item.value" @input="generateOutput()" class="bg-transparent outline-none border text-slate-200 border-slate-500 text-base px-2 py-1 w-full" placeholder="Value" />
     </div>
-    <button class="w-10 text-sm flex justify-center items-center bg-slate-300 text-slate-800">－</button>
+    <button class="w-10 text-sm flex justify-center items-center bg-slate-300 text-slate-800" @click="removeItem(item)">－</button>
   </div>
 </template>
 
@@ -12,5 +12,5 @@
 import { inject } from 'vue';
 defineProps<{ item: any }>()
 
-const { generateOutput }:any = inject('generate')
+const { generateOutput, removeItem }:any = inject('generate')
 </script>

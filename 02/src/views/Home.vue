@@ -27,6 +27,9 @@ const input = reactive({
 function addItem() {
   input.items.push({ key: '', value: '' });
 }
+const removeItem = (data:any) => {
+  input.items.filter((item:any) => item.key !== data.key)
+}
 
 onMounted(() => {
   modal.generateOutput()
@@ -58,12 +61,12 @@ const modal: any = {
         });
       }
     });
+  },
+  removeItem: (data:any) => {
+    input.items.filter((item:any) => item.key !== data.key)
   }
 };
 
-// function generateOutput() {
-  
-// }
 
 provide('generate', modal)
 
