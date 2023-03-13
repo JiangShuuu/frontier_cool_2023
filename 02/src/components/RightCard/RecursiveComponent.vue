@@ -2,7 +2,7 @@
   <div class="recursive-component text-lg">
     <div v-for="(value, key) in data" :key="key" class="recursive-component__item">
       <span v-if="isNumber(key)" class="recursive-component__key flex">
-        {{ key }}: <p @click="toggleOpen()">+</p>
+        {{ key }}: <p v-if="objectLength(value)" @click="toggleOpen()" class="cursor-pointer">{{ isOpen ? '-' : '+' }}</p>
       </span>
       <span class="recursive-component__value">
         <template v-if="isObject(value)">
@@ -41,9 +41,9 @@ const isObject = (value:any) => {
 
 const objectLength = (value: any) => {
   if (typeof value === 'object' ) {
-    return value.length
+    return true
   } else {
-    return 0
+    return false
   }
 }
 </script>
