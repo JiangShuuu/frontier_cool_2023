@@ -7,8 +7,11 @@ div.border.border-blue
 </template>
 <script lang="ts" setup>
 import Card from './Card.vue'
-import { TypeItem } from '~/views/Home.vue'
-
+interface TypeItem {
+  uuid: string,
+  key: string,
+  value: string
+}
 defineProps<{ items: TypeItem[] }>();
 defineEmits(['add-item', 'generate-output'])
 </script>

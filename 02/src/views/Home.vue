@@ -13,7 +13,7 @@ import { reactive, onMounted, provide } from 'vue'
 import { v4 as uuidv4 } from 'uuid';
 import { reverse, uniqBy }from 'lodash'
 
-export interface TypeItem {
+interface TypeItem {
   uuid: string,
   key: string,
   value: string

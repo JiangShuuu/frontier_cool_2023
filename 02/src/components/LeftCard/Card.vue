@@ -8,8 +8,12 @@ div.px-5.py-2.flex
 
 <script lang="ts" setup>
 import { inject } from 'vue';
-import { TypeItem } from '~/views/Home.vue'
 
+interface TypeItem {
+  uuid: string,
+  key: string,
+  value: string
+}
 defineProps<{ item: TypeItem }>()
 
 const { generateOutput, removeItem }:any = inject('generate')

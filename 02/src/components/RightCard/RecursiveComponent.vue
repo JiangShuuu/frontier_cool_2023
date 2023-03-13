@@ -6,7 +6,7 @@ div.ml-3.text-lg
         | {{ key }} :
         span(v-if="objectLength(value)" @click="toggleOpen()" class="cursor-pointer")
           | {{ isOpen ? '[-]' : '[+]' }}
-      span.recursive-component__value
+      span
         template(v-if="isObject(value)")
           template(v-if="isOpen")
             RecursiveComponent(:data="value" :level="level + 1")
@@ -16,7 +16,7 @@ div.ml-3.text-lg
 
 <script setup lang="ts">
 import { ref } from 'vue'
-const props = defineProps({
+defineProps({
   data: { required: true },
   level: { type: Number, required: false, default: 0},
 });
