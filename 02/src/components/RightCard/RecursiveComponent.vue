@@ -2,7 +2,7 @@
   <div class="ml-3 text-lg">
     <div v-for="(value, key) in data" :key="key" class="my-1">
       <span v-if="isNumber(key)" class="font-bold">
-        {{ key }}: <span v-if="objectLength(value)" @click="toggleOpen()" class="cursor-pointer">{{ isOpen ? '[-]' : '[+]' }}</span>
+        {{ key }} : <span v-if="objectLength(value)" @click="toggleOpen()" class="cursor-pointer">{{ isOpen ? '[-]' : '[+]' }}</span>
       </span>
       <span class="recursive-component__value">
         <template v-if="isObject(value)">
@@ -11,7 +11,7 @@
           </template>
         </template>
         <template v-else>
-          <span class="text-pink">{{ value }}</span>
+          <span class="text-pink ml-2">{{ value }}</span>
         </template>
       </span>
     </div>
@@ -31,20 +31,16 @@ const toggleOpen = () => {
   isOpen.value = !isOpen.value
 }
 
-const isNumber = (type:any) => {
+const isNumber = (type: any) => {
   return typeof type !== 'number'
 }
 
-const isObject = (value:any) => {
+const isObject = (value: any) => {
   return typeof value === 'object' && value !== null;
 }
 
 const objectLength = (value: any) => {
-  if (typeof value === 'object' ) {
-    return true
-  } else {
-    return false
-  }
+  if (typeof value === 'object' ) return true
 }
 </script>
 

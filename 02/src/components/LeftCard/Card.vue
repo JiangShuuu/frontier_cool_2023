@@ -10,7 +10,9 @@
 
 <script lang="ts" setup>
 import { inject } from 'vue';
-defineProps<{ item: any }>()
+import { TypeItem } from '~/views/Home.vue'
+
+defineProps<{ item: TypeItem }>()
 
 const { generateOutput, removeItem }:any = inject('generate')
 </script>

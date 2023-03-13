@@ -14,6 +14,16 @@ import RightCard from '~/components/RightCard/index.vue'
 import { reactive, onMounted, provide } from 'vue'
 import { v4 as uuidv4 } from 'uuid';
 
+export interface TypeItem {
+  uuid: string,
+  key: string,
+  value: string
+}
+
+onMounted(() => {
+  modal.generateOutput()
+})
+
 const input = reactive({
   items: [
     { uuid: uuidv4(), key: 'nav.header.creator', value: '3D Fabric Creator' },
@@ -28,10 +38,6 @@ const input = reactive({
 function addItem() {
   input.items.push({ uuid: uuidv4(), key: '', value: '' });
 }
-
-onMounted(() => {
-  modal.generateOutput()
-})
 
 const modal: any = {
   generateOutput: () => {
@@ -60,8 +66,8 @@ const modal: any = {
       }
     });
   },
-  removeItem: (data:any) => {
-    const itemNews = input.items.filter((item:any) => item.uuid !== data.uuid)
+  removeItem: (data: TypeItem) => {
+    const itemNews = input.items.filter((item: TypeItem) => item.uuid !== data.uuid)
     input.items = itemNews
   }
 };

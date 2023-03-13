@@ -10,7 +10,8 @@
 </template>
 <script lang="ts" setup>
 import Card from './Card.vue'
+import { TypeItem } from '~/views/Home.vue'
 
-defineProps<{ items: any }>();
+defineProps<{ items: TypeItem[] }>();
 defineEmits(['add-item', 'generate-output'])
 </script>

@@ -5,7 +5,7 @@
 </template>
 <script lang="ts" setup>
 import RecursiveComponent from './RecursiveComponent.vue'
-defineProps<{ output: any; }>();
+defineProps<{ output: object; }>();
 </script>
 
 <style lang="postcss" scoped>
