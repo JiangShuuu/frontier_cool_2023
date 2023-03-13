@@ -2,6 +2,7 @@
 
 ## Random User
 ### 部署網址
+#### 使用Netlify部署
 https://stately-malabi-43e7bd.netlify.app/
 ### 指定功能
 #### 首頁

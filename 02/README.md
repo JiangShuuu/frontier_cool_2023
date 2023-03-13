@@ -2,6 +2,7 @@
 
 ## Nested Key-Value Pair Tree Viewer
 ### 部署網址
+#### 使用Netlify部署
 https://deft-axolotl-d3570b.netlify.app/
 ### 指定功能
    - 畫面分為兩側，一側為輸入區，一側為預覽區。
